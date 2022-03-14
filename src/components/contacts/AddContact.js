@@ -1,8 +1,10 @@
 import React, {useState, useEffect} from 'react';
-import {Link} from 'react-router-dom';
+import {Link, useNavigate} from 'react-router-dom';
 import { ContactService } from '../../services/ContactService';
 
 let AddContact = () => {
+
+    const navigate = useNavigate();
 
     let [state, setState] = useState({
         loading: false,
@@ -46,11 +48,25 @@ let AddContact = () => {
         }
     }, []);
 
+    const submitForm = async event => {
+        event.preventDefault();
+        try {
+            const response = await ContactService.createContact(state.contact);
+            if(response) {
+                navigate('/contacts/list', { replace: true });
+            }
+        } catch(error) {
+            setState({
+                ...state, errorMessage: error.message
+            });
+            navigate('/contact/add',  { replace: false })
+        }
+    }
+
     let {loading, contact, groups, errorMessage} = state;
 
     return (
         <React.Fragment>
-            <pre>{JSON.stringify(state.contact)}</pre>
             <section className="add-contact p-3">
                 <div className="container">
                     <div className="row">
@@ -60,7 +76,7 @@ let AddContact = () => {
                         </div>
                         <div className="row">
                             <div className="co-md-4">
-                                <form>
+                                <form onSubmit={submitForm}>
                                     <div className="mb-2">
                                         <input
                                             required={true}
@@ -127,7 +143,7 @@ let AddContact = () => {
                                             { 
                                                 groups.length > 0 && groups.map(group => {
                                                     return (
-                                                        <option key={group.id}>{group.name}</option>
+                                                        <option key={group.id} value={group.id}>{group.name}</option>
                                                     );
                                                 })
                                             }

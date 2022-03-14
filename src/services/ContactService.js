@@ -22,4 +22,9 @@ export class ContactService {
         const dataURL = `${this.serverURL}/contacts/${contactId}`;
         return axios.get(dataURL);
     }
+
+    static createContact(contact){
+        const dataURL = `${this.serverURL}/contacts`;
+        return axios.post(dataURL, contact);
+    }
 }

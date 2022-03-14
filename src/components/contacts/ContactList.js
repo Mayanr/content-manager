@@ -114,8 +114,7 @@ let ContactList = () => {
                 <section className="contact-list">
                     <div className="container">
                         <div className="row">
-                            {renderedContacts}
-                            
+                            {renderedContacts}       
                         </div>
                     </div>
                 </section>

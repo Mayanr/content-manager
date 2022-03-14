@@ -12,7 +12,7 @@ let EditContact = () => {
                             <p className="fst-italic">placeholder text</p>
                         </div>
                         <div className="row">
-                            <dv className="co-md-4">
+                            <div className="co-md-4">
                                 <form>
                                     <div className="mb-2">
                                         <input type="text" className="form-control" placeholder="name"/>
@@ -30,7 +30,7 @@ let EditContact = () => {
                                         <Link to={'/contacts/list'} className="btn btn-dark ms-2">Cancel</Link>
                                     </div>
                                 </form>
-                            </dv>
+                            </div>
                         </div>
                     </div>
                 </div>

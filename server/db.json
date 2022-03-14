@@ -1,0 +1,60 @@
+{
+    "contacts": [
+        {
+            "id": "287324",
+            "name": "Mayan",
+            "photo": "https://i.pinimg.com/originals/ba/d4/5a/bad45a40fa6e153ef8d1599ba875102c.png",
+            "mobile": "723-345-0125",
+            "email": "mayan@bu.edu",
+            "title": "BI Developer",
+            "company": "UMG",
+            "group": "1"
+        },
+        {
+            "id": "90934",
+            "name": "Ron",
+            "photo": "https://www.vhv.rs/dpng/d/544-5445462_people-icons-png-flat-person-icon-png-transparent.png",
+            "mobile": "153-036-7721",
+            "email": "ron@gmail.com",
+            "title": "Recruiter",
+            "company": "Crexi",
+            "group": "2"
+        },
+        {
+            "id": "90934",
+            "name": "Ty",
+            "photo": "https://www.vhv.rs/dpng/d/544-5445462_people-icons-png-flat-person-icon-png-transparent.png",
+            "mobile": "993-185-3561",
+            "email": "amiti89@gmail.com",
+            "title": "Lawyer",
+            "company": "Cooley",
+            "group": "3"
+        }
+    ],
+    "groups" : [
+        {
+            "id": "1",
+            "name": "Colleague"           
+        },
+        {
+            "id": "2",
+            "name": "Friends"           
+        },
+        {
+            "id": "3",
+            "name": "Family"           
+        },
+        {
+            "id": "4",
+            "name": "Service"           
+        },
+        {
+            "id": "5",
+            "name": "Community"           
+        },
+        {
+            "id": "6",
+            "name": "Social"           
+        }
+    ]
+}

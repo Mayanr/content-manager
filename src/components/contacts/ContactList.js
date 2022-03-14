@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import {Link} from 'react-router-dom';
 import { ContactService } from '../../services/ContactService';
+import Spinner from '../spinner/Spinner';
 
 let ContactList = () => {
 
@@ -29,11 +30,50 @@ let ContactList = () => {
             });
         }
     }, []);
-
     let {loading, contacts, errorMessage} = state;
+
+    const renderedContacts = contacts.map(contact => {
+        return (
+            <div className="col-md-6">
+                <div className="card">
+                    <div className="card-body">
+                        <div className="row">
+                            <div className="col-md-4">
+                                <img src={contact.photo} alt="phot goes here" className="img-fluid contact-img" />
+                            </div>
+                            <div className="col-md-7">
+                                <ul className="list-group">
+                                    <li className="list-group-item list-group-item-action">
+                                        Name: {contact.name}
+                                    </li>
+                                    <li className="list-group-item list-group-item-action">
+                                        Mobile: {contact.mobile}
+                                    </li>
+                                    <li className="list-group-item list-group-item-action">
+                                        Email: {contact.email}
+                                    </li>
+                                </ul>
+                            </div>
+                            <div className="col-md-1">
+                                <Link to={`/contacts/view/:contactId`} className="btn btn-warning">
+                                    <i className="fa fa-eye"/>
+                                </Link>
+                                <Link to={`/contacts/edit/:contactId`} className="btn btn-primary">
+                                    <i className="fa fa-pen"/>
+                                </Link>
+                                <button className="btn btn-danger">
+                                    <i className="fa fa-trash"/>
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        )
+    });
+
     return (
         <React.Fragment>
-            <pre>{JSON.stringify(contacts)}</pre>
             <section className="contact-search p-3">
                 <div className="container">
                     <div className="grid">
@@ -68,47 +108,19 @@ let ContactList = () => {
                 </div>
             </section>
 
-            <section className="contact-list">
-                <div className="container">
-                    <div className="row">
-                        <div className="col-md-6">
-                            <div className="card">
-                                <div className="card-body">
-                                    <div className="row">
-                                        <div className="col-md-4">
-                                            <img src="https://www.vhv.rs/dpng/d/544-5445462_people-icons-png-flat-person-icon-png-transparent.png" alt="phot goes here" className="img-fluid contact-img" />
-                                        </div>
-                                        <div className="col-md-7">
-                                            <ul className="list-group">
-                                                <li className="list-group-item list-group-item-action">
-                                                    Name: Kelly
-                                                </li>
-                                                <li className="list-group-item list-group-item-action">
-                                                    Mobile: 879-878-1209
-                                                </li>
-                                                <li className="list-group-item list-group-item-action">
-                                                    Email: kellyT@gmail.com
-                                                </li>
-                                            </ul>
-                                        </div>
-                                        <div className="col-md-1">
-                                            <Link to={`/contacts/view/:contactId`} className="btn btn-warning">
-                                                <i className="fa fa-eye"/>
-                                            </Link>
-                                            <Link to={`/contacts/edit/:contactId`} className="btn btn-primary">
-                                                <i className="fa fa-pen"/>
-                                            </Link>
-                                            <button className="btn btn-danger">
-                                                <i className="fa fa-trash"/>
-                                            </button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
+        {
+            loading ? <Spinner /> : 
+            <React.Fragment>
+                <section className="contact-list">
+                    <div className="container">
+                        <div className="row">
+                            {renderedContacts}
+                            
                         </div>
                     </div>
-                </div>
-            </section>
+                </section>
+            </React.Fragment>
+        }
         </React.Fragment>
     );
 };

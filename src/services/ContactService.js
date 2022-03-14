@@ -4,7 +4,7 @@ export class ContactService {
     static serverURL = 'http://localhost:9000';
 
     static getGroups(){
-        const dataURL = `${this.serverURL}/group`;
+        const dataURL = `${this.serverURL}/groups`;
         return axios.get(dataURL);
     }
 

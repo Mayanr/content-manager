@@ -6,10 +6,12 @@ import ContactList from './components/contacts/ContactList';
 import ViewContact from './components/contacts/ViewContact';
 import AddContact from './components/contacts/AddContact';
 import EditContact from './components/contacts/EditContact';
+import Spinner from './components/spinner/Spinner';
 
 let App = () => {
   return (
     <React.Fragment>
+      {/* <Spinner /> */}
       <NavBar />
       <Routes>
         <Route path={'/'} element={<Navigate to={'/contacts/list'}/>}/>

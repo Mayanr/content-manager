@@ -55,10 +55,10 @@ let ContactList = () => {
                                 </ul>
                             </div>
                             <div className="col-md-1">
-                                <Link to={`/contacts/view/:contactId`} className="btn btn-warning">
+                                <Link to={`/contacts/view/${contact.id}`} className="btn btn-warning">
                                     <i className="fa fa-eye"/>
                                 </Link>
-                                <Link to={`/contacts/edit/:contactId`} className="btn btn-primary">
+                                <Link to={`/contacts/edit/${contact.id}`} className="btn btn-primary">
                                     <i className="fa fa-pen"/>
                                 </Link>
                                 <button className="btn btn-danger">
